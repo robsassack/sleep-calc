@@ -1,13 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sleep Calculator</title>
 </head>
+
 <body>
-  <div class="content"></div>
+  <h1>Sleep Calculator</h1>
+  <div class="content">
+    <div class="sleep-now-container">
+      <h2>Sleep now</h2>
+      <span>Press this button if going to sleep now</span>
+      <button>Sleep now</button>
+    </div>
+    <div class="wake-at-container">
+      <h2>Wake up at</h2>
+      <span>Enter the time you want to wake up at</span>
+      <input type="time" id="wake-at-input">
+      <button>Go</button>
+    </div>
+    <div class="sleep-at-container">
+      <h2>Sleep at</h2>
+      <span>Enter the time you will go to sleep</span>
+      <input type="time" id="sleep-at-input">
+      <button>Go</button>
+    </div>
+  </div>
+  <div class="add-sleep-time">
+    <input type="checkbox" name="enable-time-to-sleep" id="enable-time-to-sleep"><label for="enable-time-to-sleep">Include
+      minutes
+      <input type="number" id="minutes" min="1" max="60" value="15" oninput="this.value = !!this.value &&
+      Math.abs(this.value) >= 1 &&
+      Math.abs(this.value) <= 60
+      ? Math.abs(this.value) : null">
+      to fall asleep</label>
+  </div>
+
 </body>
 <script src="main.js"></script>
+
 </html>
