@@ -9,7 +9,7 @@
 </head>
 
 <body>
-  <h1>Sleep Calculator</h1>
+  <h1>Sleep Calculator🌙</h1>
   <div class="content">
     <div class="sleep-now-container">
       <h2>Sleep now</h2>
@@ -32,7 +32,7 @@
   <div class="add-sleep-time">
     <input type="checkbox" name="enable-time-to-sleep" id="enable-time-to-sleep" checked="true"><label
       for="enable-time-to-sleep">Include
-      <input type="number" id="minutes" min="1" max="60" value="15" oninput="this.value = !!this.value &&
+      <input type="number" id="minutes" min="1" max="60" value="15" inputmode="decimal" oninput="this.value = !!this.value &&
       Math.abs(this.value) >= 1 &&
       Math.abs(this.value) <= 60
       ? Math.abs(this.value) : null">

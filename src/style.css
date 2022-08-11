@@ -1,9 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400,500&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-weight: 400;
 }
 
 body {
@@ -19,9 +20,14 @@ input {
   background-color: #595d86;
 }
 
+#minutes {
+  width: 50px;
+}
+
 button {
   background-color: #595d86;
   border: 1px solid #979ddd;
+  color: #cdd0f1;
   padding: 2px 5px;
   border-radius: 5px;
 }
@@ -36,7 +42,7 @@ button {
   outline: 2px solid #979ddd;
   border-radius: 5px;
   height: 80px;
-  width: 120px;
+  width: 140px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,7 +53,7 @@ button {
 
 .cycle-time {
   font-size: 1.75em;
-  font-weight: bold;
+  font-weight: 500;
   padding-bottom: 5px;
   border-bottom: 1px solid #979ddd;
 }
