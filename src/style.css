@@ -5,3 +5,46 @@
   padding: 0;
   font-family: "Roboto", Helvetica, Arial, sans-serif;
 }
+
+body {
+  background-color: #2E3047;
+  color: #979ddd;
+}
+
+input {
+  background-color: #595d86;
+}
+
+button {
+  background-color: #595d86;
+  border: 1px solid #979ddd;
+  padding: 2px 5px;
+  border-radius: 5px;
+}
+
+.cycle {
+  outline: 1px solid black;
+  height: 80px;
+  width: 120px;
+}
+
+.cycle-time {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.cycle-6 .cycle-time {
+  color: #91E5A0;
+}
+
+.cycle-5 .cycle-time {
+  color: #FFFFA2;
+}
+
+.cycle-4 .cycle-time {
+  color: #FFD7A2;
+}
+
+.cycle-3 .cycle-time {
+  color: #FFA2A2;
+}

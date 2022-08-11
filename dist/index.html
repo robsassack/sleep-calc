@@ -30,13 +30,13 @@
     </div>
   </div>
   <div class="add-sleep-time">
-    <input type="checkbox" name="enable-time-to-sleep" id="enable-time-to-sleep"><label for="enable-time-to-sleep">Include
-      minutes
+    <input type="checkbox" name="enable-time-to-sleep" id="enable-time-to-sleep"><label
+      for="enable-time-to-sleep">Include
       <input type="number" id="minutes" min="1" max="60" value="15" oninput="this.value = !!this.value &&
       Math.abs(this.value) >= 1 &&
       Math.abs(this.value) <= 60
       ? Math.abs(this.value) : null">
-      to fall asleep</label>
+      minutes to fall asleep</label>
   </div>
 
 </body>

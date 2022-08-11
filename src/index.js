@@ -1,5 +1,5 @@
 import './style.css';
-import { add, sub } from 'date-fns';
+import { add, sub, format } from 'date-fns';
 
 const sleepNowButton = document.querySelector('.sleep-now');
 const wakeAtButton = document.querySelector('.wake-at');
@@ -33,9 +33,40 @@ function sleepTimes(wakeTime) {
   };
 }
 
+function setContent(newContent) {
+  const content = document.querySelector('.content');
+  content.textContent = '';
+  content.appendChild(newContent);
+}
+
+function wakeContent(wakeTime) {
+  const wakeTimeContent = document.createElement('div');
+  const cycles = [6, 5, 4, 3];
+  cycles.forEach((cycle) => {
+    const cycleContent = document.createElement('div');
+    cycleContent.classList.add('cycle');
+    cycleContent.classList.add(`cycle-${cycle}`);
+
+    const cycleTime = document.createElement('div');
+    cycleTime.classList.add('cycle-time');
+    cycleTime.innerText = `${format(wakeTime[`${cycle} Cycles`], 'h:mm a')}`;
+    const cycleNum = document.createElement('div');
+    cycleNum.classList.add('cycle-num');
+    cycleNum.innerText = `${cycle} Cycles`;
+
+    cycleContent.appendChild(cycleTime);
+    cycleContent.appendChild(cycleNum);
+    wakeTimeContent.appendChild(cycleContent);
+  });
+
+  setContent(wakeTimeContent);
+}
+// temporary call to test wake times
+// wakeContent(wakeTimes(new Date()));
+
 sleepNowButton.addEventListener('click', () => {
   const sleepTime = new Date();
-  console.log(wakeTimes(sleepTime));
+  wakeContent(wakeTimes(sleepTime));
 });
 
 wakeAtButton.addEventListener('click', () => {
@@ -54,6 +85,6 @@ sleepAtButton.addEventListener('click', () => {
     const sleepTime = new Date();
     sleepTime.setHours(sleepAtTime.split(':')[0]);
     sleepTime.setMinutes(sleepAtTime.split(':')[1]);
-    console.log(wakeTimes(sleepTime));
+    wakeContent(wakeTimes(sleepTime));
   }
 });
