@@ -5,11 +5,22 @@ const sleepNowButton = document.querySelector('.sleep-now');
 const wakeAtButton = document.querySelector('.wake-at');
 const sleepAtButton = document.querySelector('.sleep-at');
 
+function getExtraTime() {
+  const fallAsleepTime = document.querySelector('#enable-time-to-sleep');
+  if (fallAsleepTime.checked) {
+    return Number(document.querySelector('#minutes').value);
+  }
+  return 0;
+}
+
 function wakeTimes(sleepTime) {
-  const wakeTime6Cycles = add(sleepTime, { hours: 9 });
-  const wakeTime5Cycles = add(sleepTime, { hours: 7, minutes: 30 });
-  const wakeTime4Cycles = add(sleepTime, { hours: 6 });
-  const wakeTime3Cycles = add(sleepTime, { hours: 4, minutes: 30 });
+  let extraTime = getExtraTime();
+  const wakeTime6Cycles = add(sleepTime, { hours: 9, minutes: extraTime });
+  const wakeTime4Cycles = add(sleepTime, { hours: 6, minutes: extraTime });
+
+  extraTime += 30;
+  const wakeTime5Cycles = add(sleepTime, { hours: 7, minutes: extraTime });
+  const wakeTime3Cycles = add(sleepTime, { hours: 4, minutes: extraTime });
 
   return {
     '6 Cycles': wakeTime6Cycles,
@@ -20,10 +31,13 @@ function wakeTimes(sleepTime) {
 }
 
 function sleepTimes(wakeTime) {
-  const sleepTime6Cycles = sub(wakeTime, { hours: 9 });
-  const sleepTime5Cycles = sub(wakeTime, { hours: 7, minutes: 30 });
-  const sleepTime4Cycles = sub(wakeTime, { hours: 6 });
-  const sleepTime3Cycles = sub(wakeTime, { hours: 4, minutes: 30 });
+  let extraTime = getExtraTime();
+  const sleepTime6Cycles = sub(wakeTime, { hours: 9, minutes: extraTime });
+  const sleepTime4Cycles = sub(wakeTime, { hours: 6, minutes: extraTime });
+
+  extraTime += 30;
+  const sleepTime5Cycles = sub(wakeTime, { hours: 7, minutes: extraTime });
+  const sleepTime3Cycles = sub(wakeTime, { hours: 4, minutes: extraTime });
 
   return {
     '6 Cycles': sleepTime6Cycles,
@@ -41,6 +55,7 @@ function setContent(newContent) {
 
 function wakeContent(wakeTime) {
   const wakeTimeContent = document.createElement('div');
+  wakeTimeContent.classList.add('time-list');
   const cycles = [6, 5, 4, 3];
   cycles.forEach((cycle) => {
     const cycleContent = document.createElement('div');
@@ -75,7 +90,7 @@ wakeAtButton.addEventListener('click', () => {
     const wakeTime = new Date();
     wakeTime.setHours(wakeAtTime.split(':')[0]);
     wakeTime.setMinutes(wakeAtTime.split(':')[1]);
-    console.log(sleepTimes(wakeTime));
+    wakeContent(sleepTimes(wakeTime));
   }
 });
 
