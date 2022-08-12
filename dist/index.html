@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>Sleep Calculator</title>
 </head>
 
@@ -12,18 +12,20 @@
   <h1>Sleep Calculator🌙</h1>
   <div class="content">
     <div class="sleep-now-container">
-      <h2>Sleep now</h2>
+      <h2>Sleep now...</h2>
       <span>Press this button if you are going to sleep now</span>
-      <button class="sleep-now">Sleep now</button>
+      <div class="sleep-button-container">
+        <button class="sleep-now">Sleep now</button>
+      </div>
     </div>
     <div class="wake-at-container">
-      <h2>Wake up at</h2>
+      <h2>Wake up at...</h2>
       <span>Enter the time you want to wake up at</span>
       <input type="time" id="wake-at-input">
       <button class="wake-at">Go</button>
     </div>
     <div class="sleep-at-container">
-      <h2>Sleep at</h2>
+      <h2>Sleep at...</h2>
       <span>Enter the time you will go to sleep</span>
       <input type="time" id="sleep-at-input">
       <button class="sleep-at">Go</button>
@@ -38,7 +40,9 @@
       ? Math.abs(this.value) : null">
       minutes to fall asleep</label>
   </div>
-  <button class="start-over">Start over</button>
+  <div class="start-over-container">
+    <button class="start-over">Start over</button>
+  </div>
 
 </body>
 <script src="main.js"></script>

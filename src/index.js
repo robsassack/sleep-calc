@@ -61,6 +61,7 @@ function makeContent() {
   const makeTimeContent = document.createElement('div');
   const makeTimeText = document.createElement('div');
 
+  makeTimeText.classList.add('time-text');
   let times = time;
   if (currentMode === 'sleep') {
     times = wakeTimes(time);
