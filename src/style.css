@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
 
 * {
   margin: 0;
@@ -22,6 +22,11 @@ input {
 
 #minutes {
   width: 50px;
+  color: #cdd0f1;
+}
+
+#sleep-at-input, #wake-at-input {
+  color: #cdd0f1;
 }
 
 button {
@@ -30,6 +35,10 @@ button {
   color: #cdd0f1;
   padding: 2px 5px;
   border-radius: 5px;
+}
+
+label {
+  user-select: none;
 }
 
 .time-list {

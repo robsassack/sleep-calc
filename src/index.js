@@ -5,6 +5,9 @@ const sleepNowButton = document.querySelector('.sleep-now');
 const wakeAtButton = document.querySelector('.wake-at');
 const sleepAtButton = document.querySelector('.sleep-at');
 
+let currentMode = '';
+let time = new Date();
+
 function getExtraTime() {
   const fallAsleepTime = document.querySelector('#enable-time-to-sleep');
   if (fallAsleepTime.checked) {
@@ -53,9 +56,15 @@ function setContent(newContent) {
   content.appendChild(newContent);
 }
 
-function wakeContent(wakeTime) {
-  const wakeTimeContent = document.createElement('div');
-  wakeTimeContent.classList.add('time-list');
+function makeContent() {
+  let times = time;
+  if (currentMode === 'sleep') {
+    times = wakeTimes(time);
+  } else {
+    times = sleepTimes(time);
+  }
+  const makeTimeContent = document.createElement('div');
+  makeTimeContent.classList.add('time-list');
   const cycles = [6, 5, 4, 3];
   cycles.forEach((cycle) => {
     const cycleContent = document.createElement('div');
@@ -64,42 +73,61 @@ function wakeContent(wakeTime) {
 
     const cycleTime = document.createElement('div');
     cycleTime.classList.add('cycle-time');
-    cycleTime.innerText = `${format(wakeTime[`${cycle} Cycles`], 'h:mm a')}`;
+    cycleTime.innerText = `${format(times[`${cycle} Cycles`], 'h:mm a')}`;
     const cycleNum = document.createElement('div');
     cycleNum.classList.add('cycle-num');
     cycleNum.innerText = `${cycle} Cycles`;
 
     cycleContent.appendChild(cycleTime);
     cycleContent.appendChild(cycleNum);
-    wakeTimeContent.appendChild(cycleContent);
+    makeTimeContent.appendChild(cycleContent);
   });
 
-  setContent(wakeTimeContent);
+  setContent(makeTimeContent);
 }
 // temporary call to test wake times
-// wakeContent(wakeTimes(new Date()));
+// makeContent(new Date(), true);
 
 sleepNowButton.addEventListener('click', () => {
-  const sleepTime = new Date();
-  wakeContent(wakeTimes(sleepTime));
+  currentMode = 'sleep';
+  time = new Date();
+  makeContent(time);
 });
 
 wakeAtButton.addEventListener('click', () => {
+  currentMode = 'wake';
   const wakeAtTime = document.querySelector('#wake-at-input').value;
   if (wakeAtTime) {
-    const wakeTime = new Date();
-    wakeTime.setHours(wakeAtTime.split(':')[0]);
-    wakeTime.setMinutes(wakeAtTime.split(':')[1]);
-    wakeContent(sleepTimes(wakeTime));
+    time = new Date();
+    time.setHours(wakeAtTime.split(':')[0]);
+    time.setMinutes(wakeAtTime.split(':')[1]);
+    makeContent();
   }
 });
 
 sleepAtButton.addEventListener('click', () => {
+  currentMode = 'sleep';
   const sleepAtTime = document.querySelector('#sleep-at-input').value;
   if (sleepAtTime) {
-    const sleepTime = new Date();
-    sleepTime.setHours(sleepAtTime.split(':')[0]);
-    sleepTime.setMinutes(sleepAtTime.split(':')[1]);
-    wakeContent(wakeTimes(sleepTime));
+    time = new Date();
+    time.setHours(sleepAtTime.split(':')[0]);
+    time.setMinutes(sleepAtTime.split(':')[1]);
+    makeContent();
+  }
+});
+
+document.querySelector('#enable-time-to-sleep').addEventListener('change', () => {
+  makeContent(time);
+});
+
+document.querySelector('#minutes').addEventListener('keyup', () => {
+  if (document.querySelector('#enable-time-to-sleep').checked) {
+    makeContent(time);
+  }
+});
+
+document.querySelector('#minutes').addEventListener('change', () => {
+  if (document.querySelector('#enable-time-to-sleep').checked) {
+    makeContent(time);
   }
 });
