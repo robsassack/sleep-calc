@@ -85,8 +85,6 @@ function makeContent() {
 
   setContent(makeTimeContent);
 }
-// temporary call to test wake times
-// makeContent(new Date(), true);
 
 sleepNowButton.addEventListener('click', () => {
   currentMode = 'sleep';
@@ -117,17 +115,19 @@ sleepAtButton.addEventListener('click', () => {
 });
 
 document.querySelector('#enable-time-to-sleep').addEventListener('change', () => {
-  makeContent(time);
+  if (currentMode) {
+    makeContent(time);
+  }
 });
 
 document.querySelector('#minutes').addEventListener('keyup', () => {
-  if (document.querySelector('#enable-time-to-sleep').checked) {
+  if (document.querySelector('#enable-time-to-sleep').checked && currentMode) {
     makeContent(time);
   }
 });
 
 document.querySelector('#minutes').addEventListener('change', () => {
-  if (document.querySelector('#enable-time-to-sleep').checked) {
+  if (document.querySelector('#enable-time-to-sleep').checked && currentMode) {
     makeContent(time);
   }
 });
