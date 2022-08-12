@@ -57,14 +57,21 @@ function setContent(newContent) {
 }
 
 function makeContent() {
+  const makeTimeContent = document.createElement('div');
+  const makeTimeText = document.createElement('div');
+
   let times = time;
   if (currentMode === 'sleep') {
     times = wakeTimes(time);
+    makeTimeText.innerText = `If you are going to sleep at ${format(time, 'h:mm a')}, you should wake up at...`;
   } else {
     times = sleepTimes(time);
+    makeTimeText.innerText = `If you are waking up at ${format(time, 'h:mm a')}, you should go to sleep at...`;
   }
-  const makeTimeContent = document.createElement('div');
-  makeTimeContent.classList.add('time-list');
+  makeTimeContent.appendChild(makeTimeText);
+
+  const timeList = document.createElement('div');
+  timeList.classList.add('time-list');
   const cycles = [6, 5, 4, 3];
   cycles.forEach((cycle) => {
     const cycleContent = document.createElement('div');
@@ -80,7 +87,8 @@ function makeContent() {
 
     cycleContent.appendChild(cycleTime);
     cycleContent.appendChild(cycleNum);
-    makeTimeContent.appendChild(cycleContent);
+    timeList.appendChild(cycleContent);
+    makeTimeContent.appendChild(timeList);
   });
 
   setContent(makeTimeContent);
