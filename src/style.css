@@ -40,7 +40,11 @@ button {
   color: #cdd0f1;
   padding: 5px 20px;
   border-radius: 5px;
-  font-size: 1.5em;
+  font-size: 1.25em;
+}
+
+span {
+  font-size: 1.25em;;
 }
 
 label {
@@ -62,6 +66,18 @@ label {
   flex-direction: column;
   align-items: center;
   gap: 5px;
+}
+
+.input-container input {
+  height: 22px;
+  font-size: 1.1em;
+  padding: 5px;
+}
+
+.input-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
 .time-text {
@@ -119,4 +135,13 @@ label {
 
 .start-over {
   visibility: hidden;
+}
+
+.add-sleep-time {
+  font-size: 1.25em;
+}
+
+.add-sleep-time input {
+  font-size: 1.1em;
+  margin: 5px;
 }
