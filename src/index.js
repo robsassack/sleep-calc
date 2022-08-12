@@ -4,6 +4,7 @@ import { add, sub, format } from 'date-fns';
 const sleepNowButton = document.querySelector('.sleep-now');
 const wakeAtButton = document.querySelector('.wake-at');
 const sleepAtButton = document.querySelector('.sleep-at');
+const startOver = document.querySelector('.start-over');
 
 let currentMode = '';
 let time = new Date();
@@ -92,6 +93,8 @@ function makeContent() {
   });
 
   setContent(makeTimeContent);
+
+  startOver.style.visibility = 'visible';
 }
 
 sleepNowButton.addEventListener('click', () => {
@@ -138,4 +141,8 @@ document.querySelector('#minutes').addEventListener('change', () => {
   if (document.querySelector('#enable-time-to-sleep').checked && currentMode) {
     makeContent(time);
   }
+});
+
+startOver.addEventListener('click', () => {
+  window.location.reload();
 });

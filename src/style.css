@@ -86,3 +86,7 @@ label {
 .cycle-3 .cycle-time {
   color: #FFA2A2;
 }
+
+.start-over {
+  visibility: hidden;
+}
