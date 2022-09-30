@@ -59,7 +59,7 @@ label {
 }
 
 .sleep-now-container, .wake-at-container, .sleep-at-container {
-  outline: 2px solid #979ddd;
+  border: 2px solid #979ddd;
   border-radius: 5px;
   padding: 10px;
   display: flex;
@@ -94,7 +94,7 @@ label {
 }
 
 .cycle {
-  outline: 2px solid #979ddd;
+  border: 2px solid #979ddd;
   border-radius: 5px;
   height: 80px;
   width: 140px;
