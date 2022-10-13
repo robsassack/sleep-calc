@@ -8,6 +8,9 @@
   },
   "author": "Rob Sassack",
   "devDependencies": {
+    "@babel/core": "^7.19.3",
+    "@babel/preset-env": "^7.19.4",
+    "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
     "date-fns": "^2.29.1",
     "eslint": "^8.21.0",
