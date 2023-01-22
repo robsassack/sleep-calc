@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #2E3047;
+  background-color: #2e3047;
   color: #979ddd;
   padding-top: 15px;
   display: flex;
@@ -28,7 +28,8 @@ input {
   color: #cdd0f1;
 }
 
-#sleep-at-input, #wake-at-input {
+#sleep-at-input,
+#wake-at-input {
   color: #cdd0f1;
 }
 
@@ -39,10 +40,21 @@ button {
   padding: 5px 20px;
   border-radius: 5px;
   font-size: 1.25em;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #7378aa;
+  color: #cdd0f1;
+}
+
+button:active {
+  background-color: #464969;
+  color: #cdd0f1;
 }
 
 span {
-  font-size: 1.25em;;
+  font-size: 1.25em;
 }
 
 label {
@@ -56,7 +68,9 @@ label {
   gap: 20px;
 }
 
-.sleep-now-container, .wake-at-container, .sleep-at-container {
+.sleep-now-container,
+.wake-at-container,
+.sleep-at-container {
   border: 2px solid #979ddd;
   border-radius: 5px;
   padding: 10px;
@@ -116,19 +130,19 @@ label {
 }
 
 .cycle-6 .cycle-time {
-  color: #91E5A0;
+  color: #91e5a0;
 }
 
 .cycle-5 .cycle-time {
-  color: #FFFFA2;
+  color: #ffffa2;
 }
 
 .cycle-4 .cycle-time {
-  color: #FFD7A2;
+  color: #ffd7a2;
 }
 
 .cycle-3 .cycle-time {
-  color: #FFA2A2;
+  color: #ffa2a2;
 }
 
 .start-over {
