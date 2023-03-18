@@ -95,7 +95,7 @@ function makeContent() {
 
   setContent(makeTimeContent);
 
-  startOver.style.visibility = 'visible';
+  startOver.style.display = 'block';
 }
 
 sleepNowButton.addEventListener('click', () => {

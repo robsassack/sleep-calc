@@ -146,7 +146,7 @@ label {
 }
 
 .start-over {
-  visibility: hidden;
+  display: none;
 }
 
 .add-sleep-time {
@@ -156,4 +156,10 @@ label {
 .add-sleep-time input {
   font-size: 1.1em;
   margin: 5px;
+}
+
+.github-logo {
+  margin: 10px 0;
+  font-size: 1.75em;
+  color: #979ddd;
 }
